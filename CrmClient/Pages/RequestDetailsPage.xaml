@@ -1,0 +1,80 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="CrmClient.Pages.RequestDetailsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0,12,0" FontSize="27"/>
+            <TextBlock Text="{Binding Path=LocalizedResources.ItemDetailsPageTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextTitle1Style}" Margin="12,-7,0,0" />
+        </StackPanel>
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="-12,0,12,0">
+     
+           
+            <toolkit:LongListMultiSelector Name="RequestLongListMultiSelector"
+                                           ItemsSource="{Binding Requests}" 
+                                           >
+
+                <toolkit:LongListMultiSelector.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel  >
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Img}" Width="150"  Height="150" Stretch="Fill" Margin="12,-20,12,0"/>
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock   Margin="12,0,0,0" Text="{Binding Path=LocalizedResources.ItemPrice, Source={StaticResource LocalizedStrings}}" Foreground="#746E6E" FontWeight="Bold"  FontSize="25"/>
+                                        <TextBlock   Margin="12,0,0,0" Text="{Binding Price}" FontWeight="SemiBold" FontSize="{StaticResource PhoneFontSizeMediumLarge}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock   Margin="12,0,0,0" Text="{Binding Path=LocalizedResources.Quantity, Source={StaticResource LocalizedStrings}}" Foreground="#746E6E" FontWeight="Bold"  FontSize="25"/>
+                                        <TextBlock Margin="12,0,0,0"  Text="{Binding Quantity}"  FontWeight="SemiBold" FontSize="{StaticResource PhoneFontSizeMediumLarge}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock   Margin="12,0,0,0" Text="{Binding Path=LocalizedResources.Criticality, Source={StaticResource LocalizedStrings}}" Foreground="#746E6E" FontWeight="Bold"  FontSize="25"/>
+                                        <TextBlock   Margin="12,0,0,0"  Text="{Binding Criticality}" FontWeight="SemiBold" FontSize="{StaticResource PhoneFontSizeMediumLarge}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock   Margin="12,0,0,0" Text="{Binding Path=LocalizedResources.ItemId, Source={StaticResource LocalizedStrings}}" Foreground="#746E6E" FontWeight="Bold"  FontSize="25"/>
+                                        <TextBlock   Margin="12,0,0,0"   Text="{Binding ItemId}"  FontWeight="SemiBold" FontSize="{StaticResource PhoneFontSizeMediumLarge}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock   Margin="12,0,0,0" Text="{Binding Path=LocalizedResources.Made, Source={StaticResource LocalizedStrings}}" Foreground="#746E6E" FontWeight="Bold"  FontSize="25"/>
+                                        <TextBlock Margin="12,0,0,30" Text="{Binding Made}" FontWeight="SemiBold" FontSize="{StaticResource PhoneFontSizeMediumLarge}"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </toolkit:LongListMultiSelector.ItemTemplate>
+            </toolkit:LongListMultiSelector>
+        </Grid>
+    </Grid>
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" >
+            <shell:ApplicationBarIconButton  IconUri="/Assets/AppBar/checkbox.selectall.png" IsEnabled="True" Text="selecall"/>
+            <shell:ApplicationBarIconButton   IconUri="/Assets/AppBar/checkbox.deselectall.png" IsEnabled="True" Text="deselectall"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem  Text="settings" />
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+</phone:PhoneApplicationPage>
