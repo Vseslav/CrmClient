@@ -15,6 +15,7 @@ namespace CrmClient.Themes
         public Light()
         {
             InitializeComponent();
+            //hhjhlkl;j;j;;j;
         }
     }
 }
