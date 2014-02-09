@@ -13,7 +13,7 @@
     shell:SystemTray.IsVisible="True">
  
     <phone:PhoneApplicationPage.Resources>
-        <shell:ApplicationBar x:Key="DefaultBar"  IsVisible="True">
+        <shell:ApplicationBar x:Key="DefaultBar"  IsVisible="True" BackgroundColor="DeepSkyBlue" ForegroundColor="LightBlue">
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Click="MenuItemClick" Text="settings" />
             </shell:ApplicationBar.MenuItems>
@@ -272,9 +272,9 @@
 
 		<!--TitlePanel contains the name of the application and page title-->
 		<StackPanel Grid.Row="0" Margin="12,17,0,28">
-			<TextBlock Text="{Binding LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0,12,0" FontSize="27"/>
-           
-			<TextBlock Text="{Binding LocalizedResources.ApprovalTitle, Source={StaticResource LocalizedStrings}}" Margin="12,0,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="53"/>
+            <TextBlock Foreground="Coral" Text="{Binding LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0,12,0" FontSize="27"/>
+
+            <TextBlock Foreground="Coral" Text="{Binding LocalizedResources.ApprovalTitle, Source={StaticResource LocalizedStrings}}" Margin="12,0,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="53"/>
 			<TextBlock Margin="13,0,0,0" x:Name="CountItems"  FontSize="25"/>
 		</StackPanel>
         
@@ -286,7 +286,7 @@
 
 			<toolkit:LongListMultiSelector  x:Name="RequestLongListMultiSelector"
 				ItemsSource="{Binding Requests}" 
-				MouseEnter="RequestLongListMultiSelector_OnMouseEnter" UseOptimizedManipulationRouting="True" ItemContainerStyle="{StaticResource LongListMultiSelectorItemListStyle}" Template="{StaticResource LongListMultiSelectorWithVerticalAlign}">
+				LostMouseCapture="RequestLongListMultiSelector_OnMouseEnter"  MouseLeave="RequestLongListMultiSelector_OnMouseLeave" UseOptimizedManipulationRouting="True" ItemContainerStyle="{StaticResource LongListMultiSelectorItemListStyle}" Template="{StaticResource LongListMultiSelectorWithVerticalAlign}">
 
 				<toolkit:LongListMultiSelector.ItemTemplate >
 					<DataTemplate>

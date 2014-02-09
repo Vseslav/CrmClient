@@ -67,7 +67,7 @@ namespace CrmClient.Pages
             throw new NotImplementedException();
         }
 
-        private void RequestLongListMultiSelector_OnMouseEnter(object sender, MouseEventArgs e)
+        private void RequestLongListMultiSelector_OnMouseEnter(object sender, MouseEventArgs mouseEventArgs)
         {
             foreach (var button in ApplicationBar.Buttons)
             {
@@ -79,6 +79,15 @@ namespace CrmClient.Pages
         private void UIElement_OnMouseEnter(object sender, MouseEventArgs e)
         {
             NavigationService.Navigate(new Uri("/Pages/ItemDetailsPage.xaml", UriKind.Relative));
+        }
+
+        private void RequestLongListMultiSelector_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            RequestLongListMultiSelector.IsSelectionEnabled = Convert.ToBoolean("true");
+            foreach (var button in ApplicationBar.Buttons)
+            {
+                ((ApplicationBarIconButton)button).IsEnabled = false;
+            } 
         }
     }
 }
